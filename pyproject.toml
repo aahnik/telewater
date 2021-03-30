@@ -29,6 +29,7 @@ typer = "^0.3.2"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.6"
+pylint = "^2.7.4"
 
 [tool.poetry.scripts]
 telewater = 'telewater.cli:app'
