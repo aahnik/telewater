@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "telewater"
+version = "0.0.4"
+description = "A telegram bot that applies watermark on images, gifs and videos."
+authors = ["aahnik <daw@aahnik.dev>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Telethon = "^1.21.1"
+cryptg = "^0.2.post2"
+Pillow = "^8.1.2"
+hachoir = "^3.1.2"
+aiohttp = "^3.7.4"
+python-dotenv = "^0.16.0"
+requests = "^2.25.1"
+typer = "^0.3.2"
+
+[tool.poetry.dev-dependencies]
+autopep8 = "^1.5.6"
+
+[tool.poetry.scripts]
+telewater = 'telewater.cli:app'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
