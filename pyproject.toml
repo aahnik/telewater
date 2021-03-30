@@ -5,6 +5,16 @@ description = "A telegram bot that applies watermark on images, gifs and videos.
 authors = ["aahnik <daw@aahnik.dev>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/aahnik/telewater"
+keywords = ["telegram","watermark","bot","async"]
+classifiers = [
+    "Topic :: Software Development",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Cython",
+    "Programming Language :: Python :: 3.9",
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.9"
