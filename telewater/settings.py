@@ -1,3 +1,7 @@
+''' This module defines the configuration used to run telewater.
+'''
+
+
 import os
 from dotenv import load_dotenv
 
@@ -25,7 +29,7 @@ The bot supports the following :
 '''
 
 if FAKE:
-   print('Just Faking!')
+    print('Just Faking!')
 
 if not (API_ID and API_HASH):
     print('API_ID and API_HASH not found in environment variables.')

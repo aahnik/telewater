@@ -1,12 +1,18 @@
-import os
-from telewater.bot import ALL_EVENTS
+''' This module provides the pythonic entry point for accessing telewater.
+'''
 
-from telewater.settings import WATERMARK, API_ID, API_HASH
-from telewater.utils import download_image
+
+import os
+
 from telethon import TelegramClient
 
+from telewater.bot import ALL_EVENTS
+from telewater.settings import WATERMARK, API_ID, API_HASH
+from telewater.utils import download_image
 
-def start_bot(name, token):
+
+
+def start_bot(name:str, token:str):
     os.makedirs(name, exist_ok=True)
     os.chdir(name)
 

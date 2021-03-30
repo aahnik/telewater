@@ -1,3 +1,6 @@
+''' Watermark is applied here.
+'''
+
 import os
 
 
@@ -17,4 +20,3 @@ def watermark(video_file: str, X_OFF: int = 10, Y_OFF: int = 10):
     print(command)
     os.system(command)
     return output_file
-

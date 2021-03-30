@@ -1,9 +1,18 @@
-from telewater.main import start_bot
-from telewater import __version__
-from telewater.settings import FAKE
-import typer
+''' This module implements the command line interface for telewater,
+using the modern and robust `typer`.
+'''
+
+
 from typing import Optional
 import logging
+
+import typer
+
+from telewater import __version__
+from telewater.main import start_bot
+from telewater.settings import FAKE
+
+
 app = typer.Typer(add_completion=False)
 
 
@@ -15,7 +24,8 @@ def version_callback(value: bool):
 
 def verbosity_callback(value: bool):
     if value:
-        print('Verbosity turned on. \nThis is suitable for debugging.\n')
+        logging.info(
+            'Verbosity turned on. \nThis is suitable for debugging.\n')
         level = logging.INFO
     else:
         level = logging.WARNING
@@ -34,7 +44,8 @@ def main(
                                   '--token', '-t',
                                   help='Bot Token obtained from @BotFather.',
                                   envvar='BOT_TOKEN',
-                                  prompt='Please paste the bot token (your input will be invisible)',
+                                  prompt='Please paste the bot token \
+                                (your input will be invisible)',
                                   hide_input=True,
                                   confirmation_prompt=True),
 
@@ -60,3 +71,5 @@ def main(
         # when the env var FAKE_TELEWATER is truthy, then no real work is done
         # this is for CLI testing purposes
         print(f'name is {name} and token is {token}')
+
+# AAHNIK 2021

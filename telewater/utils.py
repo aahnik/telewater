@@ -1,3 +1,7 @@
+''' Various utility functions are defined in this module.
+'''
+
+
 import requests
 import shutil
 

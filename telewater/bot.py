@@ -1,14 +1,17 @@
-from telethon import TelegramClient, events
+''' This module defines the functions that handle different events.
+'''
+
+import os
 import logging
+
+from telethon import TelegramClient, events
+
 from telewater.settings import API_ID, API_HASH, HELP, X_OFF, Y_OFF
 from telewater.watermark import watermark
 from telewater.utils import download_image, get_args
-import os
 
 
 # TODO: (optional) send logs to attached logs channel
-
-
 
 
 async def start(event):
@@ -75,8 +78,6 @@ async def watermarker(event):
     #     )]
     # ))
 # client.run_until_disconnected()
-
-
 
 
 ALL_EVENTS = {
