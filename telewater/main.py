@@ -7,12 +7,11 @@ import os
 from telethon import TelegramClient
 
 from telewater.bot import ALL_EVENTS
-from telewater.settings import WATERMARK, API_ID, API_HASH
+from telewater.const import WATERMARK
 from telewater.utils import download_image
 
 
-
-def start_bot(name:str, token:str):
+def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
     os.makedirs(name, exist_ok=True)
     os.chdir(name)
 

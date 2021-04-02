@@ -6,8 +6,8 @@ import logging
 
 from telethon import TelegramClient, events
 
-from telewater.settings import API_ID, API_HASH, HELP, X_OFF, Y_OFF
-from telewater.watermark import watermark
+from telewater.const import HELP, X_OFF, Y_OFF
+from telewater.watermark import watermark_video
 from telewater.utils import download_image, get_args
 
 
@@ -61,7 +61,7 @@ async def watermarker(event):
         mp4_file = await event.download_media('')
         # TODO: suffix the downloaded media with time-stamp and user id
 
-        outf = watermark(mp4_file, X_OFF, Y_OFF)
+        outf = watermark_video(mp4_file, X_OFF, Y_OFF)
         print(outf)
         await event.client.send_file(event.sender_id, outf)
         os.remove(mp4_file)

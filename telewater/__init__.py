@@ -3,6 +3,6 @@
 
 from telewater.main import start_bot
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 # AAHNIK 2021
