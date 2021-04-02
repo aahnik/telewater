@@ -17,8 +17,11 @@ A telegram bot that applies watermark on images, gifs and videos.
 - [Heroku](https://www.heroku.com/) made me cry. Don't be seduced by "free" and "one-click" deploys.
 - [Digital Ocean](https://www.digitalocean.com/) Ubuntu Droplet is a good choice for high performance.
 
+## Installation
 
-## Requirements
+If you are familiar with `docker` then [click here](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker) otherwise, continue reading.
+
+### Requirements
 
 Make sure to have these installed in your system.
 
@@ -36,62 +39,29 @@ Open you terminal to check if you have all basic requirements properly installed
 
 3. Run `ffmpeg -h` and it should display a help message and version above `4.2.4`.
 
-## Installation
+### Install via pip
 
 ```shell
 pip install telewater
 ```
 
 
-## Configuration
-
-Create a file named `.env` inside your current directory (or the directory from which you desire to run the `telewater` command.)
-
-Fill the file with your `API_ID` and `API_HASH`
-
-Example:
-
-```txt
-API_ID=12345
-API_HASH=102837:kjfjfk9r9JOIJOIjoi_jf9wr0w
-```
-
-Replace the above values with the actual values. Learn [how to get them](https://docs.telethon.dev/en/latest/basic/signing-in.html) for your telegram account.
-
-
 ## Usage
 
 Telewater has a simple command line interface to start the bot.
 
-Simply open your terminal and run `telewater`.
+Simply open your terminal and run `telewater`. It will prompt you to enter the required information.
 
 
-> **Note:**
-> - It will prompt you to input the bot name and token.
+## Furthur reading
 
-For more advanced options, run `telewater --help`.
-
-```shell
-Usage: telewater [OPTIONS]
-
-  Run the bot with the username and token obtained from @BotFather.
-
-Options:
-  -n, --name TEXT   Name of the bot you are runnning.  [env var: BOT_USERNAME;
-                    required]
-
-  -t, --token TEXT  Bot Token obtained from @BotFather.  [env var: BOT_TOKEN;
-                    required]
-
-  -l, --loud        Increase output verbosity.  [env var: LOUD]
-  -v, --version     Show version and exit.
-  --help            Show this message and exit.
-```
+- [Advanced CLI usage](https://github.com/aahnik/telewater/wiki/Telewater-CLI-usage)
+- [Install and run using docker](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker)
+- [Deploy to Digital Ocean](https://github.com/aahnik/telewater/wiki/Deploy-to-Digital-Ocean)
+- [Run multiple instances](https://github.com/aahnik/telewater/wiki/Run-multiple-instances)
 
 
+For any furthur help, feel free to [create an issue](https://github.com/aahnik/telewater/issues) in the github repo.
 
-> **Note:**
-> - In the above help text, you see `env var` specified for some options. The value of those options can be set by using an environment variable (of the specified name), instead of passing as a command line argument.
-> - You can write your enviroment variables for telewater inside a file called `.env` which lies in the same directory from which `telewater` command is invoked.
 
-For any furthur help, feel free to create an issue.
+<!-- AAHNIK 2021 -->
