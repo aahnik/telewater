@@ -55,7 +55,7 @@ Simply open your terminal and run `telewater`. It will prompt you to enter the r
 
 ## Furthur reading
 
-- [Advanced CLI usage](https://github.com/aahnik/telewater/wiki/Telewater-CLI-usage)
+- [Telewater CLI usage](https://github.com/aahnik/telewater/wiki/Telewater-CLI-usage)
 - [Install and run using docker](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker)
 - [Deploy to Digital Ocean](https://github.com/aahnik/telewater/wiki/Deploy-to-Digital-Ocean)
 - [Run multiple instances](https://github.com/aahnik/telewater/wiki/Run-multiple-instances)
