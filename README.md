@@ -49,6 +49,7 @@ Simply open your terminal and run `telewater`. It will prompt you to enter the r
 
 ## Furthur reading
 
+- [Environment Variables](https://github.com/aahnik/telewater/wiki/Environment-Variables)
 - [Telewater CLI usage](https://github.com/aahnik/telewater/wiki/Telewater-CLI-usage)
 - [Install and run using docker](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker)
 - [Deploy to Digital Ocean](https://github.com/aahnik/telewater/wiki/Deploy-to-Digital-Ocean)
