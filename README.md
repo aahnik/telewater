@@ -11,12 +11,6 @@ A telegram bot that applies watermark on images, gifs and videos.
 - It **does not store media** (photos/videos/gifs) on the server. Media is deleted immediately after the watermarked version is sent to the user.
 
 
-## Where to Deploy
-
-- It is recommended to run this on a **Linux VPS**.
-- [Heroku](https://www.heroku.com/) made me cry. Don't be seduced by "free" and "one-click" deploys.
-- [Digital Ocean](https://www.digitalocean.com/) Ubuntu Droplet is a good choice for high performance.
-
 ## Installation
 
 If you are familiar with `docker` then [click here](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker) otherwise, continue reading.
