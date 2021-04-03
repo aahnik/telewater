@@ -13,7 +13,7 @@ A telegram bot that applies watermark on images, gifs and videos.
 
 ## Installation
 
-If you are familiar with `docker` then [click here](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker) otherwise, continue reading.
+If you are familiar with **Docker** then [click here](https://github.com/aahnik/telewater/wiki/Install-and-run-using-docker) otherwise, continue reading.
 
 ### Requirements
 
