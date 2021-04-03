@@ -24,5 +24,5 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
         print(f'Adding event {key}')
         client.add_event_handler(*val)
 
-    client.run_until_disconnected()
     print(f'Started bot {name}')
+    client.run_until_disconnected()
