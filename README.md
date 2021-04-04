@@ -47,7 +47,7 @@ Telewater has a simple command line interface to start the bot.
 Simply open your terminal and run `telewater`. It will prompt you to enter the required information.
 
 
-## Furthur reading
+## Further reading
 
 - [Environment Variables](https://github.com/aahnik/telewater/wiki/Environment-Variables)
 - [Telewater CLI usage](https://github.com/aahnik/telewater/wiki/Telewater-CLI-usage)
@@ -56,7 +56,7 @@ Simply open your terminal and run `telewater`. It will prompt you to enter the r
 - [Run multiple instances](https://github.com/aahnik/telewater/wiki/Run-multiple-instances)
 
 
-For any furthur help, feel free to [create an issue](https://github.com/aahnik/telewater/issues) in the github repo.
+For any further help, feel free to [create an issue](https://github.com/aahnik/telewater/issues) in the GitHub repo.
 
 
 <!-- AAHNIK 2021 -->
