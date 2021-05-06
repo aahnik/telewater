@@ -4,10 +4,10 @@
 
 import os
 
-from telethon import TelegramClient
+from telethon.sync import TelegramClient, functions, types
 
 from telewater.bot import ALL_EVENTS
-from telewater.const import config
+from telewater.const import COMMANDS, config
 from telewater.utils import download_image
 
 
@@ -19,6 +19,15 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
         download_image(url=config.watermark)
 
     client = TelegramClient(name, API_ID, API_HASH).start(bot_token=token)
+
+    client(
+        functions.bots.SetBotCommandsRequest(
+            commands=[
+                types.BotCommand(command=key, description=value)
+                for key, value in COMMANDS.items()
+            ]
+        )
+    )
 
     for key, val in ALL_EVENTS.items():
         print(f"Adding event {key}")

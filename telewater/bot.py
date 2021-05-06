@@ -4,9 +4,9 @@
 import logging
 import os
 
-from telethon import TelegramClient, events
+from telethon import events
 
-from telewater.const import HELP, Config, config
+from telewater.const import COMMANDS, HELP, Config, config
 from telewater.utils import download_image, get_args
 from telewater.watermark import watermark_video
 
@@ -91,18 +91,6 @@ async def watermarker(event):
         os.remove(outf)
     elif event.photo:
         await event.respond("Photos are currently not supported")
-
-
-# TODO: fetch information about bot name
-# TODO:set the bot commands
-
-# client(functions.bots.SetBotCommandsRequest(
-#     commands=[types.BotCommand(
-#         command='some string here',
-#         description='some string here'
-#     )]
-# ))
-# client.run_until_disconnected()
 
 
 ALL_EVENTS = {

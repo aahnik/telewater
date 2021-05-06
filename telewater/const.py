@@ -29,8 +29,8 @@ https://github.com/aahnik/telewater
 
 COMMANDS = {
     "start": "start the bot or check if alive",
-    "setimg": "set the image for applying as watermark",
-    "setpos": "set the position to apply the watermark",
+    "set": "set the value for a config variable",
+    "get": "know the value of a config variable",
     "help": "learn how to use the bot",
 }
 
