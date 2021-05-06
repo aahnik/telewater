@@ -6,7 +6,8 @@ image.png
 __pycache__/
 *.py[cod]
 *$py.class
-
+t.py
+bots.yml
 # C extensions
 *.so
 

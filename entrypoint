@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+"""A command line utility to launch multiple instances of telewater using terminal multiplexer screen"""
+
+import os
+import time
+
+import yaml
+from dotenv import load_dotenv
+
+
+def get_bots():
+    bots_yml = os.getenv("bots_yml")
+    if not bots_yml:
+        print("bots_yml env var not found")
+        if "bots.yml" in os.listdir():
+            with open("bots.yml") as file:
+                bots_yml = file.read()
+        else:
+            print("bot.yml file not found")
+            return None
+
+    bots = yaml.full_load(bots_yml)
+    print(bots)
+    return bots
+
+
+def checks():
+    assert os.system("screen --help") == 0
+    assert os.system("ffmpeg --help") == 0
+
+
+if __name__ == "__main__":
+
+    load_dotenv()
+
+    bots = get_bots()
+
+    if not bots:
+        os.system("telewater")
+    else:
+        for bot_name, token in bots.items():
+            command = f"""screen -dmS {bot_name} bash -c 'telewater -n {bot_name} -t "{token}" ' """
+            os.system(command)
+            time.sleep(5)
+            print(f"deployed @{bot_name}")
