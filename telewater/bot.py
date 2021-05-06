@@ -6,15 +6,12 @@ import os
 
 from telethon import TelegramClient, events
 
-from telewater.const import HELP, X_OFF, Y_OFF
+from telewater.const import HELP, Config, config
 from telewater.utils import download_image, get_args
 from telewater.watermark import watermark_video
 
-# TODO: (optional) send logs to attached logs channel
-
 
 async def start(event):
-    # TODO: authentication for admins and users via deep linking, or "enter your access code"
     await event.respond("Hi! I am alive.")
     raise events.StopPropagation
 
@@ -26,45 +23,74 @@ async def bot_help(event):
         raise events.StopPropagation
 
 
-async def set_image(event):
-    # TODO: accept images directly besides urls
-    # TODO: show preview on different sizes
-    # TODO: allow image resize / compress/ transparent bkrnd
-
+async def set_config(event):
+    """usage /set KEY: VAL"""
+    global config
     try:
-        image_url = get_args(event.message.text)
-        # TODO: if args are empty, ask follow up question to get user-input
-        download_image(image_url, "image.png")
-        await event.respond("Done")
+        pos_arg = get_args(event.message.text)
+        splitted = pos_arg.split(":", 1)
+
+        if not len(splitted) == 2:
+            raise ValueError("Incorrect argument format")
+
+        key, value = [item.strip() for item in splitted]
+
+        config_dict = config.dict()
+        if not key in config_dict.keys():
+            raise ValueError(f"The key {key} is not a valid key in configuration.")
+
+        config_dict[key] = value
+        print(config_dict)
+
+        config = Config(**config_dict)
+
+        print(config)
+        if key == "watermark":
+            download_image(url=value)
+        await event.respond(f"The value of {key} was set to {value}")
+
+    except ValueError as err:
+        print(err)
+        await event.respond(str(err))
+    except Exception as err:
+        print(err)
+
     finally:
         raise events.StopPropagation
 
 
-async def set_pos(event):
+async def get_config(event):
+    """usage /get KEY"""
+    global config
     try:
-        pos_arg = get_args(event.message.text)
-        # TODO: if the pos args are empty, ask follow up question to get user-input of standard postions (TOP/BOTTOM ...)
-        #  specific pos must be supplied thru args
-        global X_OFF, Y_OFF
-        X_OFF, Y_OFF = pos_arg.split("*")
-        await event.respond(f"X_OFF = {X_OFF} and Y_OFF = {Y_OFF}")
+        key = get_args(event.message.text)
+        config_dict = config.dict()
+        await event.respond(f"{config_dict.get(key)}")
+    except ValueError as err:
+        print(err)
+        await event.respond(str(err))
+
     finally:
+
         raise events.StopPropagation
 
 
 async def watermarker(event):
     # TODO: reject large files (above certain file limit)
     # TODO: also watermark photos
+    global config
     if event.gif or event.video:
 
         mp4_file = await event.download_media("")
         # TODO: suffix the downloaded media with time-stamp and user id
 
-        outf = watermark_video(mp4_file, X_OFF, Y_OFF)
+        outf = watermark_video(mp4_file)
         print(outf)
         await event.client.send_file(event.sender_id, outf)
         os.remove(mp4_file)
         os.remove(outf)
+    elif event.photo:
+        await event.respond("Photos are currently not supported")
 
 
 # TODO: fetch information about bot name
@@ -82,8 +108,8 @@ async def watermarker(event):
 ALL_EVENTS = {
     "start": (start, events.NewMessage(pattern="/start")),
     "help": (bot_help, events.NewMessage(pattern="/help")),
-    "set_image": (set_image, events.NewMessage(pattern="/setimg")),
-    "set_pos": (set_pos, events.NewMessage(pattern="/setpos")),
+    "set": (set_config, events.NewMessage(pattern="/set")),
+    "get": (get_config, events.NewMessage(pattern="/get")),
     "watermarker": (watermarker, events.NewMessage()),
 }
 # this is a dictionary where the keys are the unique string identifier for the events

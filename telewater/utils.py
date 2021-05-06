@@ -19,7 +19,7 @@ import requests
 #                 await f.close()
 
 
-def download_image(url: str, filename: str) -> bool:
+def download_image(url: str, filename: str = "image.png") -> bool:
     try:
         print("Downloading image ... ")
         response = requests.get(url, stream=True)
@@ -37,8 +37,12 @@ def download_image(url: str, filename: str) -> bool:
 
 
 def get_args(text: str):
-    prefix = text.split(" ", 1)[0]
+    splitted = text.split(" ", 1)
+    if not len(splitted) == 2:
+        raise ValueError(f"No args provided to command.")
+    else:
+        prefix, args = splitted
     print(prefix)
-    args = text.removeprefix(prefix).strip()
+    args = args.strip()
     print(args)
     return args
