@@ -1,11 +1,11 @@
-''' Watermark is applied here.
-'''
+""" Watermark is applied here.
+"""
 
 import os
 
 
 def watermark_video(video_file: str, X_OFF: int = 10, Y_OFF: int = 10):
-    output_file = f'watered_{video_file}'
+    output_file = f"watered_{video_file}"
     # TODO: allow time stamping in file names
     # TODO: allow the ffmpeg options to be customized by bot admins
     # TODO: allow standard watermark positions like TOP/MIDDLE/BOTTOM/LEFT/RIGHT in total 9 combinations

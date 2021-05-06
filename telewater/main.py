@@ -1,5 +1,5 @@
-''' This module provides the pythonic entry point for accessing telewater.
-'''
+""" This module provides the pythonic entry point for accessing telewater.
+"""
 
 
 import os
@@ -16,13 +16,13 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
     os.chdir(name)
 
     if WATERMARK:
-        download_image(url=WATERMARK, filename='image.png')
+        download_image(url=WATERMARK, filename="image.png")
 
     client = TelegramClient(name, API_ID, API_HASH).start(bot_token=token)
 
     for key, val in ALL_EVENTS.items():
-        print(f'Adding event {key}')
+        print(f"Adding event {key}")
         client.add_event_handler(*val)
 
-    print(f'Started bot {name}')
+    print(f"Started bot {name}")
     client.run_until_disconnected()

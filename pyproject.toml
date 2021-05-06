@@ -31,6 +31,8 @@ typer = "^0.3.2"
 autopep8 = "^1.5.6"
 pylint = "^2.7.4"
 typer-cli = "^0.0.11"
+black = "^21.5b0"
+isort = "^5.8.0"
 
 [tool.poetry.scripts]
 telewater = 'telewater.cli:app'

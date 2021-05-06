@@ -1,9 +1,10 @@
-''' Various utility functions are defined in this module.
-'''
+""" Various utility functions are defined in this module.
+"""
 
+
+import shutil
 
 import requests
-import shutil
 
 # TODO: make file download using asynchronous method
 # import aiohttp
@@ -20,23 +21,23 @@ import shutil
 
 def download_image(url: str, filename: str) -> bool:
     try:
-        print('Downloading image ... ')
+        print("Downloading image ... ")
         response = requests.get(url, stream=True)
         if response.status_code == 200:
-            print('Got file response')
-            with open(filename, 'wb') as file:
+            print("Got file response")
+            with open(filename, "wb") as file:
                 response.raw.decode_content = True
                 shutil.copyfileobj(response.raw, file)
     except Exception as err:
         print(err)
         return False
     else:
-        print('File created image')
+        print("File created image")
         return True
 
 
 def get_args(text: str):
-    prefix = text.split(' ', 1)[0]
+    prefix = text.split(" ", 1)[0]
     print(prefix)
     args = text.removeprefix(prefix).strip()
     print(args)
