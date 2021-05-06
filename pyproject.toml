@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "telewater"
-version = "0.0.7"
+version = "0.0.10"
 description = "A telegram bot that applies watermark on images, gifs and videos."
 authors = ["aahnik <daw@aahnik.dev>"]
 license = "MIT"
