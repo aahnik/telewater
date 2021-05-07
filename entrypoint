@@ -25,14 +25,7 @@ def get_bots():
     return bots
 
 
-def checks():
-    assert os.system("screen --version") == 0
-    assert os.system("ffmpeg -version") == 0
-
-
 if __name__ == "__main__":
-
-    checks()
 
     load_dotenv()
 
