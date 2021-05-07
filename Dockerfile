@@ -10,10 +10,8 @@ RUN pip install --upgrade pip poetry
 
 COPY telewater telewater
 
-COPY README.md LICENSE pyproject.toml poetry.lock entrypoint ./
-
-RUN chmod +x entrypoint
+COPY README.md LICENSE pyproject.toml poetry.lock entrypoint.py ./
 
 RUN poetry install
 
-CMD poetry run ./entrypoint
+CMD poetry run python -u entrypoint.py

@@ -40,13 +40,13 @@ if __name__ == "__main__":
             os.system(command)
             time.sleep(5)
             print(f"deployed @{bot_name}")
-            print("System up")
+
             console = Console()
-            try:
-                with console.status("[bold green] Server running", spinner="aesthetic") as status:
-                    while True:
-                        time.sleep(2)
-            except KeyboardInterrupt:
-                print(
-                    "Bots will continue running in background even if you run CTRL + C")
-                print("To stop all bots run \n\tpkill screen")
+        print("System up!")
+        try:
+            while True:
+                time.sleep(2)
+        except KeyboardInterrupt:
+            print(
+                "Bots will continue running in background even if you run CTRL + C")
+            print("To stop all bots run \n\tpkill screen")
