@@ -8,6 +8,7 @@ __pycache__/
 *$py.class
 t.py
 bots.yml
+test.yml
 # C extensions
 *.so
 
