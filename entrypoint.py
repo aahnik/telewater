@@ -7,7 +7,6 @@ import time
 
 import yaml
 from dotenv import load_dotenv
-from rich.console import Console
 
 
 def get_bots():
@@ -41,12 +40,10 @@ if __name__ == "__main__":
             time.sleep(5)
             print(f"deployed @{bot_name}")
 
-            console = Console()
         print("System up!")
         try:
             while True:
                 time.sleep(2)
         except KeyboardInterrupt:
-            print(
-                "Bots will continue running in background even if you run CTRL + C")
+            print("Bots will continue running in background even if you run CTRL + C")
             print("To stop all bots run \n\tpkill screen")
