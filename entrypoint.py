@@ -37,7 +37,6 @@ if __name__ == "__main__":
         for bot_name, token in bots.items():
             command = f"""screen -dmS {bot_name} bash -c 'telewater -n {bot_name} -t "{token}" ' """
             os.system(command)
-            time.sleep(5)
             print(f"deployed @{bot_name}")
 
         print("System up!")
