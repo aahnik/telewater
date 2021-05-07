@@ -36,9 +36,17 @@ async def general_test():
         print(f"Logged in as {me.first_name}")
 
         message_obj = await client.send_file("me", td.video_file)
+        print("Uploaded the file to Saved Messages")
+
+        for bot in td.bots:
+            await client.send_message(bot, "/start")
+
+        print("Invoked /start for all the bots")
 
         for bot in td.bots:
             await client.forward_messages(bot, message_obj)
+
+        print("Forwarded the message to saved messages")
 
 if __name__ == '__main__':
     asyncio.run(general_test())
