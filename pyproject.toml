@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "telewater"
-version = "0.0.13"
+version = "0.0.14"
 description = "A telegram bot that applies watermark on images, gifs and videos."
 authors = ["aahnik <daw@aahnik.dev>"]
 license = "MIT"
@@ -28,7 +28,6 @@ requests = "^2.25.1"
 typer = "^0.3.2"
 pydantic = "^1.8.1"
 PyYAML = "^5.4.1"
-rich = "^10.1.0"
 
 [tool.poetry.dev-dependencies]
 autopep8 = "^1.5.6"
