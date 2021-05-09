@@ -17,6 +17,7 @@ API_HASH = os.getenv("API_HASH")
 
 class TestData(BaseModel):
     """This class defines the schema of the test.yml file"""
+
     bots: List[str]
     video_file: str
 
@@ -31,7 +32,7 @@ for items in td.bots:
 
 
 async def general_test():
-    async with TelegramClient('telwater_user', API_ID, API_HASH) as client:
+    async with TelegramClient("telwater_user", API_ID, API_HASH) as client:
         me = await client.get_me()
         print(f"Logged in as {me.first_name}")
 
@@ -48,5 +49,6 @@ async def general_test():
 
         print("Forwarded the message to saved messages")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     asyncio.run(general_test())

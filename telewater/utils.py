@@ -2,12 +2,19 @@
 """
 
 
+import logging
+import os
+import re
 import shutil
+from datetime import datetime
 
 import requests
 
 
 def download_image(url: str, filename: str = "image.png") -> bool:
+    if filename in os.listdir():
+        print("Image exists")
+        return True
     try:
         print("Downloading image ... ")
         response = requests.get(url, stream=True)
@@ -34,3 +41,26 @@ def get_args(text: str):
     args = args.strip()
     print(args)
     return args
+
+
+def cleanup(*files):
+    for file in files:
+        try:
+            os.remove(file)
+        except FileNotFoundError:
+            logging.info(f"File {file} does not exist.")
+
+
+def stamp(file: str, user: str):
+
+    now = str(datetime.now())
+    outf = safe_name(f"{user} {now} {file}")
+    try:
+        os.rename(file, outf)
+        return outf
+    except Exception as err:
+        logging.warning(f"Stamping file name failed for {file} to {outf}")
+
+
+def safe_name(file_name: str):
+    return re.sub(pattern="[-!@#$%^&*()\s]", repl="_", string=file_name)

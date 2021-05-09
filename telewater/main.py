@@ -6,8 +6,8 @@ import os
 
 from telethon.sync import TelegramClient, functions, types
 
+from telewater import conf
 from telewater.bot import ALL_EVENTS
-from telewater.const import COMMANDS, config
 from telewater.utils import download_image
 
 
@@ -15,8 +15,7 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
     os.makedirs(name, exist_ok=True)
     os.chdir(name)
 
-    if config.watermark:
-        download_image(url=config.watermark)
+    download_image(url=conf.config.watermark)
 
     client = TelegramClient(name, API_ID, API_HASH).start(bot_token=token)
 
@@ -24,7 +23,7 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
         functions.bots.SetBotCommandsRequest(
             commands=[
                 types.BotCommand(command=key, description=value)
-                for key, value in COMMANDS.items()
+                for key, value in conf.COMMANDS.items()
             ]
         )
     )

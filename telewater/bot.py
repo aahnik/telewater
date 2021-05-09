@@ -6,9 +6,9 @@ import os
 
 from telethon import events
 
-from telewater.const import COMMANDS, HELP, Config, config
-from telewater.utils import download_image, get_args
-from telewater.watermark import watermark_video
+from telewater import conf
+from telewater.utils import cleanup, download_image, get_args, stamp
+from telewater.watermark import watermark_image, watermark_video
 
 
 async def start(event):
@@ -18,7 +18,7 @@ async def start(event):
 
 async def bot_help(event):
     try:
-        await event.respond(HELP)
+        await event.respond(conf.HELP)
     finally:
         raise events.StopPropagation
 
@@ -35,17 +35,19 @@ async def set_config(event):
 
         key, value = [item.strip() for item in splitted]
 
-        config_dict = config.dict()
+        config_dict = conf.config.dict()
         if not key in config_dict.keys():
-            raise ValueError(f"The key {key} is not a valid key in configuration.")
+            raise ValueError(
+                f"The key {key} is not a valid key in configuration.")
 
         config_dict[key] = value
         print(config_dict)
 
-        config = Config(**config_dict)
+        conf.config = conf.Config(**config_dict)
 
-        print(config)
+        print(conf.config)
         if key == "watermark":
+            cleanup("image.png")
             download_image(url=value)
         await event.respond(f"The value of {key} was set to {value}")
 
@@ -61,10 +63,9 @@ async def set_config(event):
 
 async def get_config(event):
     """usage /get KEY"""
-    global config
     try:
         key = get_args(event.message.text)
-        config_dict = config.dict()
+        config_dict = conf.config.dict()
         await event.respond(f"{config_dict.get(key)}")
     except ValueError as err:
         print(err)
@@ -76,21 +77,18 @@ async def get_config(event):
 
 
 async def watermarker(event):
-    # TODO: reject large files (above certain file limit)
-    # TODO: also watermark photos
     global config
     if event.gif or event.video:
-
-        mp4_file = await event.download_media("")
-        # TODO: suffix the downloaded media with time-stamp and user id
-
-        outf = watermark_video(mp4_file)
-        print(outf)
-        await event.client.send_file(event.sender_id, outf)
-        os.remove(mp4_file)
-        os.remove(outf)
+        watermark = watermark_video
     elif event.photo:
-        await event.respond("Photos are currently not supported")
+        watermark = watermark_image
+    else:
+        return
+
+    org_file = stamp(await event.download_media(""), user=str(event.sender_id))
+    out_file = watermark(org_file)
+    await event.client.send_file(event.sender_id, out_file)
+    cleanup(org_file, out_file)
 
 
 ALL_EVENTS = {
