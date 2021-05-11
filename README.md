@@ -36,7 +36,7 @@ Open you terminal to check if you have all basic requirements properly installed
 ### Install via pip
 
 ```shell
-$ pip install telewater
+pip install telewater
 ```
 
 
