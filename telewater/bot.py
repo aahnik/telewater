@@ -7,12 +7,12 @@ import os
 from telethon import events
 
 from telewater import conf
-from telewater.utils import cleanup, download_image, get_args, stamp
+from telewater.utils import cleanup, download_image, get_args, stamp,gen_kv_str
 from telewater.watermark import watermark_image, watermark_video
 
 
 async def start(event):
-    await event.respond("Hi! I am alive.")
+    await event.respond(conf.START)
     raise events.StopPropagation
 
 
@@ -24,10 +24,18 @@ async def bot_help(event):
 
 
 async def set_config(event):
-    """usage /set KEY: VAL"""
+
+    notes = f"""This command is used to set the value of a config variable.
+    Usage `/set key: val`
+    Example `/set watermark: https://link/to/watermark.png`
+    {gen_kv_str()}
+    """.replace("    ","")
+
     global config
     try:
         pos_arg = get_args(event.message.text)
+        if not pos_arg:
+            raise ValueError(f"{notes}")
         splitted = pos_arg.split(":", 1)
 
         if not len(splitted) == 2:
@@ -62,9 +70,19 @@ async def set_config(event):
 
 
 async def get_config(event):
-    """usage /get KEY"""
+
+    notes = f"""This command is used to get the value of a configuration variable.
+    Usage `/get key`
+    Example `/get x_off`
+    {gen_kv_str()}
+    """.replace("    ","")
+
+
+
     try:
         key = get_args(event.message.text)
+        if not key:
+            raise ValueError(f"{notes}")
         config_dict = conf.config.dict()
         await event.respond(f"{config_dict.get(key)}")
     except ValueError as err:

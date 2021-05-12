@@ -17,13 +17,19 @@ class Config(BaseModel):
             raise ValueError(f"Choose preset from {allowed}")
         return val
 
+START = """This bot is made by aahnik.dev
+
+See source code at github.com/aahnik/telewater
+
+"""
 
 HELP = """
-This bot is made with free and open source code.
+Using the bot is very simple. Just send a photo, video or gif to the bot. The bot will reply with the watermarked media.
 
-Please star on GitHub
+The bot commands `/set` and `/get` can set and get the value of the configuration variables. The commands are simple and intuitive. The bot will show you the usage if you send an incorrect argument.
 
-https://github.com/aahnik/telewater
+Syntax for `/set` ➜  `/set key: value`
+Syntax for `/get` ➜  `/get key`
 
 """
 

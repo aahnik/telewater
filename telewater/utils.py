@@ -10,6 +10,8 @@ from datetime import datetime
 
 import requests
 
+from telewater import conf
+
 
 def download_image(url: str, filename: str = "image.png") -> bool:
     if filename in os.listdir():
@@ -34,7 +36,7 @@ def download_image(url: str, filename: str = "image.png") -> bool:
 def get_args(text: str):
     splitted = text.split(" ", 1)
     if not len(splitted) == 2:
-        raise ValueError(f"No args provided to command.")
+        return ""
     else:
         prefix, args = splitted
     print(prefix)
@@ -64,3 +66,10 @@ def stamp(file: str, user: str):
 
 def safe_name(file_name: str):
     return re.sub(pattern="[-!@#$%^&*()\s]", repl="_", string=file_name)
+
+
+def gen_kv_str():
+    kv_string = "\n**Below is your current configuration**\n\n"
+    for k, v in conf.config.dict().items():
+        kv_string += f"`{k} : {v}`\n"
+    return kv_string
