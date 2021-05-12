@@ -10,6 +10,7 @@ A telegram bot that applies watermark on images, gifs and videos.
 - **No database** connection required.
 - It **does not store media** (photos/videos/gifs) on the server. Media is deleted immediately after the watermarked version is sent to the user.
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aahnik/telewater)
 
 ## Installation
 

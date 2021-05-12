@@ -1,0 +1,35 @@
+{
+  "name": "telewater",
+  "stack": "container",
+  "description": "A telegram bot that applies watermark on images, gifs, and videos.",
+  "keywords": ["telegram", "watermark", "bot"],
+  "website": "https://aahnik.dev",
+  "repository": "https://github.com/aahnik/telewater",
+  "logo": "https://user-images.githubusercontent.com/66209958/115183360-3fa4d500-a0f9-11eb-9c0f-c5ed03a9ae17.png",
+
+  "env": {
+    "API_ID": {
+      "description": "Put the API ID obtained from my.telegram.org",
+      "value": "",
+      "required": true
+    },
+
+    "API_HASH": {
+      "description": "Put the API HASH obtained from my.telegram.org",
+      "value": "",
+      "required": true
+    },
+
+    "BOT_TOKEN": {
+      "description": "Create a new bot with BotFather and put token here",
+      "value": "",
+      "required": true
+    },
+
+    "BOT_USERNAME": {
+      "description": "Create a new bot with BotFather and put token here",
+      "value": "botusername",
+      "required": true
+    }
+  }
+}
