@@ -5,7 +5,7 @@
   "keywords": ["telegram", "watermark", "bot"],
   "website": "https://aahnik.dev",
   "repository": "https://github.com/aahnik/telewater",
-  "logo": "https://user-images.githubusercontent.com/66209958/115183360-3fa4d500-a0f9-11eb-9c0f-c5ed03a9ae17.png",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1024px-Telegram_2019_Logo.svg.png",
 
   "env": {
     "API_ID": {
