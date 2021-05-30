@@ -1,14 +1,14 @@
 """ This module defines the constants or default values.
 """
 from pydantic import BaseModel, validator
+from watermark import Position
 
 
 class Config(BaseModel):
-    watermark: str = "https://user-images.githubusercontent.com/66209958/109513526-35883200-7acb-11eb-97ed-c0b2ca72119a.png"
-    x_off: int = 10
-    y_off: int = 10
+    watermark: str = "https://user-images.githubusercontent.com/66209958/120103496-7b59a280-c16d-11eb-9590-3ad6b55e163c.png"
     frame_rate: int = 15
     preset: str = "ultrafast"
+    position: Position = Position.centre
 
     @validator("preset")
     def validate_preset(val):
@@ -16,6 +16,7 @@ class Config(BaseModel):
         if not val in allowed:
             raise ValueError(f"Choose preset from {allowed}")
         return val
+
 
 START = """This bot is made by aahnik.dev
 

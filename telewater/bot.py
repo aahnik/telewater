@@ -1,14 +1,11 @@
 """ This module defines the functions that handle different events.
 """
 
-import logging
-import os
-
 from telethon import events
+from watermark import File, Watermark, apply_watermark
 
 from telewater import conf
-from telewater.utils import cleanup, download_image, get_args, stamp,gen_kv_str
-from telewater.watermark import watermark_image, watermark_video
+from telewater.utils import cleanup, download_image, gen_kv_str, get_args, stamp
 
 
 async def start(event):
@@ -29,9 +26,10 @@ async def set_config(event):
     Usage `/set key: val`
     Example `/set watermark: https://link/to/watermark.png`
     {gen_kv_str()}
-    """.replace("    ","")
+    """.replace(
+        "    ", ""
+    )
 
-    global config
     try:
         pos_arg = get_args(event.message.text)
         if not pos_arg:
@@ -45,8 +43,7 @@ async def set_config(event):
 
         config_dict = conf.config.dict()
         if not key in config_dict.keys():
-            raise ValueError(
-                f"The key {key} is not a valid key in configuration.")
+            raise ValueError(f"The key {key} is not a valid key in configuration.")
 
         config_dict[key] = value
         print(config_dict)
@@ -75,9 +72,9 @@ async def get_config(event):
     Usage `/get key`
     Example `/get x_off`
     {gen_kv_str()}
-    """.replace("    ","")
-
-
+    """.replace(
+        "    ", ""
+    )
 
     try:
         key = get_args(event.message.text)
@@ -95,16 +92,19 @@ async def get_config(event):
 
 
 async def watermarker(event):
-    global config
-    if event.gif or event.video:
-        watermark = watermark_video
-    elif event.photo:
-        watermark = watermark_image
-    else:
+
+    if not (event.gif or event.photo or event.video):
+        await event.respond("File not supported.")
         return
 
     org_file = stamp(await event.download_media(""), user=str(event.sender_id))
-    out_file = watermark(org_file)
+
+    file = File(org_file)
+    wtm = Watermark(File("image.png"), pos=conf.config.position)
+
+    out_file = apply_watermark(
+        file, wtm, frame_rate=conf.config.frame_rate, preset=conf.config.preset
+    )
     await event.client.send_file(event.sender_id, out_file)
     cleanup(org_file, out_file)
 
