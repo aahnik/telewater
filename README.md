@@ -10,6 +10,8 @@ A telegram bot that applies watermark on images, gifs and videos.
 - **No database** connection required.
 - It **does not store media** (photos/videos/gifs) on the server. Media is deleted immediately after the watermarked version is sent to the user.
 
+Watch this [video on YouTube](https://www.youtube.com/watch?v=M-ouyCPdZw0) to learn how to use and deploy this bot.
+
 ## Usage
 
 Using the bot is very simple. Just send a photo, video or gif to the bot. The bot will reply with the watermarked media.
