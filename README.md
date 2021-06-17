@@ -20,7 +20,19 @@ The bot commands `/set` and `/get` can set and get the value of the configuratio
 
 ## Deploy
 
-This application can be easily deployed to Heroku, which is extremely good if you want to enjoy a free tier.
+Click on [this link](https://m.do.co/c/98b725055148) and get **free 100$**
+on Digital Ocean.
+
+[![DigitalOcean Referral Badge](https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%203.svg)](https://www.digitalocean.com/?refcode=98b725055148&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
+
+> **NOTE** You will get nothing if you directly sign up from Digital Ocean Home Page.
+> **Use the link** above, or **click on the big fat button** above to get free 100$.
+
+Read the **[Guide to Deploy to Digital Ocean](https://github.com/aahnik/telewater/wiki/Deploy-to-Digital-Ocean)**.
+
+------
+
+This application can also be easily deployed to Heroku, which is extremely good if you want to enjoy a free tier.
 
 You may [read further](#further-reading) to learn about more more deployment options.
 
