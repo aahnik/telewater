@@ -18,11 +18,7 @@ class Config(BaseModel):
         return val
 
 
-START = """This bot is made by aahnik.dev
-
-See source code at github.com/aahnik/telewater
-
-"""
+START = """I am alive!"""
 
 HELP = """
 Using the bot is very simple. Just send a photo, video or gif to the bot. The bot will reply with the watermarked media.
