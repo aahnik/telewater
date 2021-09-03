@@ -8,7 +8,7 @@ class Config(BaseModel):
     watermark: str = "https://raw.githubusercontent.com/Mahesh1414/image/main/20210903_221413.png"
     frame_rate: int = 15
     preset: str = "ultrafast"
-    position: Position = Position.center
+    position: Position = Position.centre
 
     @validator("preset")
     def validate_preset(val):
