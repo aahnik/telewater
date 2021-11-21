@@ -21,6 +21,8 @@ def start_bot(API_ID: int, API_HASH: str, name: str, token: str):
 
     client(
         functions.bots.SetBotCommandsRequest(
+            scope=types.BotCommandScopeDefault(),
+            lang_code='en',
             commands=[
                 types.BotCommand(command=key, description=value)
                 for key, value in conf.COMMANDS.items()
